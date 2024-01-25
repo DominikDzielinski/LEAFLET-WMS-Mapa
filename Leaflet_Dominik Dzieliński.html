@@ -10,7 +10,7 @@
       <div id = "map" style = "width: 1470px; height: 680px"></div>
       <script>
           //stworzenie warstw WMS
-         var Cieniowanie = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/NMT/GRID1/WMS/ShadedRelief', {
+         var Cieniowanie = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/NMT/GRID1/WMTS/HypsometryAndShadedRelief', {
          layers: 'raster',
          format: 'image/png',
          transparent: true
@@ -20,6 +20,12 @@
          format: 'image/png',
          transparent: true
          });
+         var Topo = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/pub/guest/G2_SKOROWIDZE_TOPO/MapServer/WMSServer', {
+         layers: 'raster',
+         format: 'image/png',
+         transparent: true
+         });
+         
          //opcje mapy - centrum oraz zoom (centrum warszawa)
          var mapOptions = {
             center: [ 52.22977, 21.011780],
@@ -30,16 +36,17 @@
          //dodawanie warstwy prg oraz popup z wojewodztwami
          var prg = L.geoJSON(prg,{
          onEachFeature: function (feature, layer) {
-            layer.bindPopup('Wojewodztwo '+ feature.properties.nazwa) 
+            layer.bindPopup('Województwo '+ feature.properties.nazwa) 
          },
 	      style: {
-            color: 'Blue',
+            color: 'Green',
             }
 	      });
          //warstwy 
          var layers = {
-            "Cieniowanie": Cieniowanie,
+            "Cieniowanie i hipsometria": Cieniowanie,
             "Ortofotomapa": Ortofotomapa,
+            "Mapa Topograficzna": Topo,
             "Państwowy Rejestr Granic": prg,
          };
 L.control.layers(null, layers).addTo(map);
