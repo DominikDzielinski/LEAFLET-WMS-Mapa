@@ -60,12 +60,12 @@ var theMarker = {};
 //dodawanie markerow pokazujace dlugosc i szerokosc geograficzna
 map.on('click',function(e){
   szer = e.latlng.lat;
-  wys = e.latlng.lng;
+  dlu = e.latlng.lng;
       if (theMarker != undefined) {
             map.removeLayer(theMarker);
       };
-   theMarker = L.marker([szer,wys]).addTo(map)
-   .bindPopup("Szerokość geograficzna:" + szer + " Długość geograficzna: "+wys).openPopup();  
+   theMarker = L.marker([szer,dlu]).addTo(map)
+   .bindPopup("Szerokość geograficzna:" + szer + " Długość geograficzna: "+dlu).openPopup();  
 });
 
       </script>
