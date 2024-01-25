@@ -1,1 +1,1 @@
-Mapa WMS Polski z działającymi funkconalnościami (GeoJson, leaflet)
+Mapa WMS Polski z działającymi funkconalnościami (GeoJson, leaflet).
